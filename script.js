@@ -24,3 +24,21 @@
 //  6. Display for the banker calling us
 //      6.5 A algorithm to create the banker's offer, based on what amounts are left
 //  7. A deal or no deal button
+
+//const briefcaseButtons = document.querySelector(".case");
+const arrayOfBriefcases = [];
+
+const initializeBriefcases = (arrayOfBriefcases) =>{
+    const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
+        1000,5000,10000,25000,50000,75000,100000,
+        200000,300000,400000,500000,750000,1000000];
+
+    while (cashAmountsArr.length > 0) {
+        const randomNumber = Math.floor(Math.random()*cashAmountsArr.length);
+        const randomAmount = cashAmountsArr[randomNumber];
+        arrayOfBriefcases.push(randomAmount);
+        cashAmountsArr.splice(randomNumber,1);
+    }
+    console.log(arrayOfBriefcases.length);
+    console.log(arrayOfBriefcases);
+}
