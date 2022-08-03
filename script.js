@@ -25,10 +25,12 @@
 //      6.5 A algorithm to create the banker's offer, based on what amounts are left
 //  7. A deal or no deal button
 
-//const briefcaseButtons = document.querySelector(".case");
-const arrayOfBriefcases = [];
+const briefcaseButtons = document.querySelectorAll(".case");
+const userPrompt = document.querySelector("#user-prompt");
+const restartButton = document.querySelector("#restart-button")
+let arrayOfBriefcases = [];
 
-const initializeBriefcases = (arrayOfBriefcases) =>{
+const handleInitializeBriefcases = () =>{
     const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
         1000,5000,10000,25000,50000,75000,100000,
         200000,300000,400000,500000,750000,1000000];
@@ -39,6 +41,22 @@ const initializeBriefcases = (arrayOfBriefcases) =>{
         arrayOfBriefcases.push(randomAmount);
         cashAmountsArr.splice(randomNumber,1);
     }
-    console.log(arrayOfBriefcases.length);
-    console.log(arrayOfBriefcases);
 }
+
+//initializing the array of briefcases on page startup
+handleInitializeBriefcases();
+console.log(arrayOfBriefcases);
+
+const handleBriefcaseClick = (i, arrayOfBriefcases) =>{
+    userPrompt.innerHTML = `
+    Briefcase #${i} had $${arrayOfBriefcases[i]}.
+    You can remove more cases.`;
+    //fade out array of cash amounts 
+}
+
+for (let i = 0; i < briefcaseButtons.length; i++) {
+    briefcaseButtons[i].addEventListener("click", () =>{
+        handleBriefcaseClick(i, arrayOfBriefcases);
+    })
+}
+
