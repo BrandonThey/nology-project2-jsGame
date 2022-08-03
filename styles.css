@@ -1,0 +1,18 @@
+#game-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cash-amounts {
+  border: 3px solid gold;
+  min-width: 20%;
+  background-color: black;
+}
+.cash-amounts p {
+  text-align: right;
+  margin: 5px;
+  border: 2px solid gold;
+  background-color: gold;
+  border-radius: 2px;
+}/*# sourceMappingURL=styles.css.map */
