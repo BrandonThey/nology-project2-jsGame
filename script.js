@@ -29,11 +29,25 @@ const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button")
 let arrayOfBriefcases = [];
-
-const handleInitializeBriefcases = () =>{
+let casesRemoved = 0;
+const handleInitializeGame = () =>{
+    //an array of possible cash amounts the user can remove or win
     const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
         1000,5000,10000,25000,50000,75000,100000,
         200000,300000,400000,500000,750000,1000000];
+    
+    //resetting arrayOfBriefCases to remove previous cash amounts
+    arrayOfBriefcases = [];
+    //Resetting the userPrompt to give a welcome message
+    userPrompt.innerHTML = "Welcome To Deal Or No Deal! Please Choose Your Personal Briefcase!"
+    
+    //resetting casesRemoved, the number of cases a user has removed
+    casesRemoved = 0;
+
+    //resetting all button texts to be their briefcase numbers
+    for (let i = 0; i < briefcaseButtons.length; i++) {
+        briefcaseButtons[i].innerHTML = `${i+1}`;
+    }
 
     while (cashAmountsArr.length > 0) {
         const randomNumber = Math.floor(Math.random()*cashAmountsArr.length);
@@ -41,22 +55,31 @@ const handleInitializeBriefcases = () =>{
         arrayOfBriefcases.push(randomAmount);
         cashAmountsArr.splice(randomNumber,1);
     }
+
 }
 
 //initializing the array of briefcases on page startup
-handleInitializeBriefcases();
+handleInitializeGame();
 console.log(arrayOfBriefcases);
 
-const handleBriefcaseClick = (i, arrayOfBriefcases) =>{
+const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
+    casesRemoved++;
+    briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
     userPrompt.innerHTML = `
     Briefcase #${i} had $${arrayOfBriefcases[i]}.
-    You can remove more cases.`;
+    You can remove more.`;
+
+    if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
+        casesRemoved >= 20){
+        alert("The banker is calling");
+    }
     //fade out array of cash amounts 
 }
 
 for (let i = 0; i < briefcaseButtons.length; i++) {
     briefcaseButtons[i].addEventListener("click", () =>{
-        handleBriefcaseClick(i, arrayOfBriefcases);
+        handleBriefcaseClick(briefcaseButtons,i, arrayOfBriefcases);
     })
 }
 
+restartButton.addEventListener("click", handleInitializeGame);
