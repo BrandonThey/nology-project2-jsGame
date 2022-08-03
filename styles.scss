@@ -1,19 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+body{
+    min-height: 100%;
+}
+
 #game-display{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 40rem;
 }
 
 .cash-amounts{
     border: 3px solid gold;
     min-width: 20%;
-    background-color: black;
+    height: 99%;
     p {
         text-align: right;
         margin: 5px;
         border: 2px solid gold;
         background-color: gold;
         border-radius: 2px;
+        height: 6.18%;
         // background color goldenrod for greyed out amounts
+    }
+}
+
+#case-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    button {
+        width: 25%;
+        height: 14%;
+        background-color: silver;
+        border-radius: 10px;
+    }
+}
+
+#user-display{
+    border: 3px solid gold;
+    display: flex;
+    height: 5rem;
+}
+
+#briefcase-display{
+    display: flex;
+    color: white;
+    border-right: 5px solid gold;
+    width: 30%;
+    align-items: center;
+    button {
+        width: 50%;
+        height: 100%;
+        background-color: silver;
+        border-radius: 10px;
+    }
+}
+
+#user-prompt-display{
+    color: white;
+
+    p {
+        width: 100%;
+        height: 100%;
+        text-align: center;
     }
 }
