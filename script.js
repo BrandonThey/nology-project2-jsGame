@@ -39,12 +39,13 @@ let arrayOfBriefcases = [];
 let casesRemoved = 0;
 let personalBriefcaseIndex = -1;
 let amountToRemove = 6;
-const handleInitializeGame = () =>{
+const handleInitializeGame = () => {
     //an array of possible cash amounts the user can remove or win
-    const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
-        1000,5000,10000,25000,50000,75000,100000,
-        200000,300000,400000,500000,750000,1000000];
-    
+    const cashAmountsArr = [.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750,
+        1000, 5000, 10000, 25000, 50000, 75000, 100000,
+        200000, 300000, 400000, 500000, 750000, 1000000
+    ];
+
     //resetting arrayOfBriefCases to remove previous cash amounts
     arrayOfBriefcases = [];
     //Resetting the userPrompt to give a welcome message
@@ -52,7 +53,7 @@ const handleInitializeGame = () =>{
     personalCase.innerHTML = `Case #`
     //resetting the cash displays to not be greyed out
     cashAmountDisplays.forEach((display) => display.classList.remove("grey-out"));
-    
+
     //resetting variables casesRemoved, the number of cases a user has removed
     //personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
     //amountToRemove the number of cases left the user can remove before the banker calls next
@@ -67,10 +68,10 @@ const handleInitializeGame = () =>{
     }
 
     while (cashAmountsArr.length > 0) {
-        const randomNumber = Math.floor(Math.random()*cashAmountsArr.length);
+        const randomNumber = Math.floor(Math.random() * cashAmountsArr.length);
         const randomAmount = cashAmountsArr[randomNumber];
         arrayOfBriefcases.push(randomAmount);
-        cashAmountsArr.splice(randomNumber,1);
+        cashAmountsArr.splice(randomNumber, 1);
     }
 
 }
@@ -78,14 +79,14 @@ const handleInitializeGame = () =>{
 const handleBankerOffer = () => {
     //filtering out all zeroed out values and then sorting
     let leftoverCashAmounts = arrayOfBriefcases.filter(Number);
-    leftoverCashAmounts = leftoverCashAmounts.sort((a,b) => a-b);
+    leftoverCashAmounts = leftoverCashAmounts.sort((a, b) => a - b);
 
     let sum = 0;
     // //finding a rough median by sorting the array then getting the index based on how many amounts are left
     // leftoverCashAmounts.sort((a,b) => a-b);
     // console.log(leftoverCashAmounts.length)
     // let medianIndex = 0, extraToRemoveIndex = 0;
-    switch(leftoverCashAmounts.length){
+    switch (leftoverCashAmounts.length) {
         //averaging up only portions of the array based on how many cases are left
         //for example if there are 20 cases left only average the first 5 cases, otherwise sum them all up
         //this is an attempt to replicate the bankers lowball offers
@@ -101,7 +102,7 @@ const handleBankerOffer = () => {
             }
             offer = Math.round(sum / 5);
             break;
-        case 11: 
+        case 11:
             for (let i = 0; i < 8; i++) {
                 sum += leftoverCashAmounts[i];
             }
@@ -117,10 +118,10 @@ const handleBankerOffer = () => {
             sum = leftoverCashAmounts.reduce((partialSum, nextVal) => partialSum + nextVal);
             offer = Math.round(sum / leftoverCashAmounts.length);
     }
-    
-    if(confirm(`The Banker would like to offer you $${offer}`)){
+
+    if (confirm(`The Banker would like to offer you $${offer}`)) {
         userPrompt.innerHTML = "Congrats!"
-    } else{
+    } else {
         userPrompt.innerHTML = "Alright!"
     }
 }
@@ -128,10 +129,10 @@ const handleBankerOffer = () => {
 //initializing the array of briefcases on page startup
 handleInitializeGame();
 
-const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
-    
+const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
+
     //getting the user's chosen personal briefcase
-    if (personalBriefcaseIndex == -1){
+    if (personalBriefcaseIndex == -1) {
         personalBriefcaseIndex = i;
         briefcaseButtons[i].classList.add("hide");
         personalCase.innerHTML = `${i+1}`
@@ -143,24 +144,24 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
         userPrompt.innerHTML = `
         Briefcase #${i} had $${arrayOfBriefcases[i]}.
         You can remove ${amountToRemove} more.`;
-        
+
         //looking through all the cash amounts to find the one that matches the eliminated briefcase in order to grey it out
         for (let j = 0; j < cashAmountDisplays.length; j++) {
             //getting the cash amount string from the html and removing all its commas
-            let cashAmountWithoutCommas = cashAmountDisplays[j].innerHTML.replace(/,/g,"");
+            let cashAmountWithoutCommas = cashAmountDisplays[j].innerHTML.replace(/,/g, "");
             //removing the dollar sign from the string then converting it to a number to be compared
             let numberedCashAmount = Number(cashAmountWithoutCommas.substring(1));
             //if the cash amount displayed value is equal to that of the one in the case then grey it out
-            if(numberedCashAmount == arrayOfBriefcases[i]){
+            if (numberedCashAmount == arrayOfBriefcases[i]) {
                 cashAmountDisplays[j].classList.add("grey-out");
             }
         }
 
-        if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
-            casesRemoved >= 20){
+        if (casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
+            casesRemoved >= 20) {
             userPrompt.innerHTML = "Woah what a game! Now the Banker is calling to give you an offer! Will you say deal or no deal?"
             //switch statement that determines how many more cases the user can remove before getting another call
-            switch(casesRemoved){
+            switch (casesRemoved) {
                 case 6:
                     //adding a delay so the user can see what briefcase they removed
                     setTimeout(handleBankerOffer, 500);
@@ -183,9 +184,9 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
                     break;
                 case 24: //if the user has removed all but one case, they have an option to switch cases
                     userPrompt.innerHTML = "Nicely done! You now have a choice... will you switch cases or keep your current one?";
-                    
-                    
-                    
+
+
+
                     userPrompt.innerHTML = "Thank you for playing Deal Or No Deal!"
                     handleInitializeGame();
                 default:
@@ -200,7 +201,7 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
         //hiding the briefcase with a delay as the play has eliminated it
         setTimeout(() => {
             briefcaseButtons[i].classList.add("hide");
-        }, 700) 
+        }, 700)
         //zeroing out the value at i since the player has eliminated the case
         arrayOfBriefcases[i] = 0;
     }
@@ -209,8 +210,8 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
 }
 
 for (let i = 0; i < briefcaseButtons.length; i++) {
-    briefcaseButtons[i].addEventListener("click", () =>{
-        handleBriefcaseClick(briefcaseButtons,i, arrayOfBriefcases);
+    briefcaseButtons[i].addEventListener("click", () => {
+        handleBriefcaseClick(briefcaseButtons, i, arrayOfBriefcases);
     })
 }
 

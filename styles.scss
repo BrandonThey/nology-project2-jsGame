@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 $primary-font: "Oswald";
 
-*{
+* {
     margin: 0;
     padding: 0;
     background-color: black;
     font-family: $primary-font, sans-serif;
 }
 
-body{
+body {
     min-height: 100%;
     margin-top: 10px;
 }
@@ -17,46 +17,52 @@ header {
     margin-bottom: 10px;
     width: 100%;
     height: 28px;
+
     div {
         margin-top: 0;
         height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        h2{
+
+        h2 {
             border: 2px solid gold;
             color: white;
             font-size: 18px;
             width: 100%;
             text-align: center;
         }
+
         h2:first-child {
             background-color: gold;
             color: black;
         }
-        h2:nth-of-type(2){
+
+        h2:nth-of-type(2) {
             background-color: black;
             color: gold;
             border: none;
         }
-        h2:nth-of-type(3){
+
+        h2:nth-of-type(3) {
             background-color: black;
             color: gold;
         }
     }
 }
 
-#game-display{
+#game-display {
     display: flex;
     flex-direction: row;
     height: 40rem;
 }
 
-.cash-amounts{
+.cash-amounts {
     margin: 0;
     border: 3px solid gold;
     min-width: 20%;
     height: 99%;
+
     p {
         text-align: center;
         margin: 5px;
@@ -68,12 +74,13 @@ header {
     }
 }
 
-#case-display{
+#case-display {
     margin: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
     button {
         margin: 0;
         width: 33%;
@@ -86,20 +93,21 @@ header {
     }
 }
 
-#user-display{
+#user-display {
     border: 3px solid gold;
     display: flex;
     height: 4rem;
     font-size: 7px;
 }
 
-#briefcase-display{
+#briefcase-display {
     display: flex;
     flex-direction: column;
     color: white;
     border-right: 5px solid gold;
     min-width: 30%;
     align-items: center;
+
     button {
         min-width: 75%;
         height: 100%;
@@ -110,9 +118,10 @@ header {
     }
 }
 
-#user-prompt-display{
+#user-prompt-display {
     color: white;
     width: 75%;
+
     h2 {
         width: 100%;
         height: 100%;
@@ -121,8 +130,9 @@ header {
 
 }
 
-#restart-button{
+#restart-button {
     width: 25%;
+
     button {
         width: 100%;
         height: 100%;
@@ -150,8 +160,8 @@ header {
     border-radius: 10px;
 }
 
-@media screen and(min-width: 760px){
-    #case-display{
+@media screen and(min-width: 760px) {
+    #case-display {
         button {
             width: 25%;
             height: 14%;
@@ -159,38 +169,39 @@ header {
         }
     }
 
-    #game-display{
+    #game-display {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         height: 40rem;
     }
-        
-    .cash-amounts{
+
+    .cash-amounts {
         p {
             text-align: right;
             font-size: 25px;
         }
     }
 
-    #briefcase-display{
+    #briefcase-display {
         display: flex;
         flex-direction: row;
         font-size: 15px;
+
         button {
             min-width: 60%;
         }
     }
 
-    #user-prompt-display{
+    #user-prompt-display {
         h2 {
             font-size: 15px;
         }
     }
 
-    #restart-button{
-        button{
-        font-size: 20px;
+    #restart-button {
+        button {
+            font-size: 20px;
         }
     }
 }
