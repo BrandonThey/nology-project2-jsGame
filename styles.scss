@@ -51,6 +51,8 @@ header {
     }
 }
 
+
+//main game display that shows cases and side amounts
 #game-display {
     display: flex;
     flex-direction: row;
@@ -93,6 +95,8 @@ header {
     }
 }
 
+
+//bottom user prompt, briefcase, and restart button
 #user-display {
     border: 3px solid gold;
     display: flex;
@@ -141,15 +145,85 @@ header {
     }
 }
 
-.hide {
-    display: none;
+
+// Banker pop up css
+.banker-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
 }
 
+.modal-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: goldenrod;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: .5rem;
+    h2{
+        background-color: goldenrod;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    div{
+        background-color: goldenrod;
+        display: flex;
+        justify-content: space-around;
+        p{
+            background-color: goldenrod;
+        }
+        button{
+            float: right;
+            width: 30%;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+    }
+}
+
+#deal-button{
+    background-color: gold;
+    color: black;
+}
+
+#no-deal-button{
+    background-color: black;
+    color: gold;
+    border: 2px solid gold;
+}
+
+.show-modal{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibilty 0s linear 0s, opacity .25s 0s, transform .25s;
+}
+
+//hide class that hides cases after being eliminated
+.hide {
+    display: none;
+    background-color: white;
+    border-radius: 6px;
+}
+
+//grey out class that changes the background color of the
+//cash amounts on the sides after they have been eliminated
 .grey-out {
     background-color: white;
     color: white;
 }
 
+//animation class to handle the animations of cases opening
 .animation {
     background-color: #902c3e;
     color: white;

@@ -26,11 +26,15 @@
 //      6.5 A algorithm to create the banker's offer, based on what amounts are left
 //  7. A deal or no deal button
 
+//add confirmation prompt to restart button
+
 const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button");
 const personalCase = document.querySelector("#personal-case");
 const cashAmountDisplays = document.querySelectorAll("p");
+const bankerPopup = document.querySelector(".banker-modal");
+const bankerOffer = document.querySelector("#banker-offer");
 //creating variables: arrayOfBriefcases, an array of "briefcases" that serves to hold the briefcase number (index) and cash amounts inside (values)
 //casesRemoved, the number of cases a user has removed
 //personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
@@ -119,11 +123,8 @@ const handleBankerOffer = () => {
             offer = Math.round(sum / leftoverCashAmounts.length);
     }
 
-    if (confirm(`The Banker would like to offer you $${offer}`)) {
-        userPrompt.innerHTML = "Congrats!"
-    } else {
-        userPrompt.innerHTML = "Alright!"
-    }
+    bankerOffer.innerHTML = `The Banker is offering you $${offer} for your briefcase`;
+    bankerPopup.classList.toggle("show-modal");
 }
 
 //initializing the array of briefcases on page startup

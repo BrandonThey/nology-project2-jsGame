@@ -128,8 +128,71 @@ header div h2:nth-of-type(3) {
   border-radius: 10px;
 }
 
+.banker-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: goldenrod;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+.modal-content h2 {
+  background-color: goldenrod;
+  font-size: 20px;
+  text-align: center;
+}
+.modal-content div {
+  background-color: goldenrod;
+  display: flex;
+  justify-content: space-around;
+}
+.modal-content div p {
+  background-color: goldenrod;
+}
+.modal-content div button {
+  float: right;
+  width: 30%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#deal-button {
+  background-color: gold;
+  color: black;
+}
+
+#no-deal-button {
+  background-color: black;
+  color: gold;
+  border: 2px solid gold;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibilty 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
 .hide {
   display: none;
+  background-color: white;
+  border-radius: 6px;
 }
 
 .grey-out {
