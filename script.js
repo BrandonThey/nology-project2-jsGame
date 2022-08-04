@@ -30,9 +30,14 @@ const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button");
 const personalCase = document.querySelector("#personal-case");
 const cashAmountDisplays = document.querySelectorAll("p");
+//creating variables: arrayOfBriefcases, an array of "briefcases" that serves to hold the briefcase number (index) and cash amounts inside (values)
+//casesRemoved, the number of cases a user has removed
+//personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
+//amountToRemove the number of cases left the user can remove before the banker calls next
 let arrayOfBriefcases = [];
 let casesRemoved = 0;
 let personalBriefcaseIndex = -1;
+let amountToRemove = 6;
 const handleInitializeGame = () =>{
     //an array of possible cash amounts the user can remove or win
     const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
@@ -43,9 +48,15 @@ const handleInitializeGame = () =>{
     arrayOfBriefcases = [];
     //Resetting the userPrompt to give a welcome message
     userPrompt.innerHTML = "Welcome To Deal Or No Deal! Please Choose Your Personal Briefcase!"
+    //resetting the cash displays to not be greyed out
+    cashAmountDisplays.forEach((display) => display.classList.remove("grey-out"));
     
-    //resetting casesRemoved, the number of cases a user has removed
+    //resetting variables casesRemoved, the number of cases a user has removed
+    //personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
+    //amountToRemove the number of cases left the user can remove before the banker calls next
     casesRemoved = 0;
+    personalBriefcaseIndex = -1;
+    amountToRemove = 6;
 
     //resetting all button texts to be their briefcase numbers
     for (let i = 0; i < briefcaseButtons.length; i++) {
@@ -74,10 +85,11 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
         //personal briefcase remove from briefcase buttons
     } else {
         casesRemoved++;
+        amountToRemove--;
         briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
         userPrompt.innerHTML = `
         Briefcase #${i} had $${arrayOfBriefcases[i]}.
-        You can remove more.`;
+        You can remove ${amountToRemove} more.`;
         
         //looking through all the cash amounts to find the one that matches the eliminated briefcase in order to grey it out
         for (let j = 0; j < cashAmountDisplays.length; j++) {
@@ -93,10 +105,30 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
 
         if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
             casesRemoved >= 20){
+            //switch statement that determines how many more cases the user can remove before getting another call
+            switch(casesRemoved){
+                case 6:
+                    amountToRemove = 5;
+                    break;
+                case 11:
+                    amountToRemove = 4;
+                    break;
+                case 15:
+                    amountToRemove = 3;
+                    break;
+                case 18:
+                    amountToRemove = 2;
+                    break;
+                default:
+                    amountToRemove = 1;
+                    break;
+            }
+
             //adding a delay so the user can see what briefcase they removed
             setTimeout(() => {
                 alert("The banker is calling");
             }, 500);
+
         }
     }
 
