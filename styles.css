@@ -76,17 +76,17 @@ header div h2:nth-of-type(3) {
   width: 60%;
 }
 #case-display button {
-  margin: 0;
-  min-width: 33%;
-  height: 11%;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 13px;
   word-wrap: break-word;
 }
 
 .case {
   color: black;
   background-color: silver;
+  min-width: 33%;
+  height: 11%;
+  margin: 0;
 }
 
 #user-display {
@@ -220,11 +220,6 @@ header div h2:nth-of-type(3) {
 }
 
 @media screen and (min-width: 760px) {
-  #case-display button {
-    width: 25%;
-    height: 14%;
-    font-size: 28px;
-  }
   #game-display {
     display: flex;
     flex-direction: row;
@@ -234,6 +229,12 @@ header div h2:nth-of-type(3) {
   .cash-amounts p {
     text-align: right;
     font-size: 25px;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
   }
   #briefcase-display {
     display: flex;
@@ -248,5 +249,19 @@ header div h2:nth-of-type(3) {
   }
   #restart-button button {
     font-size: 20px;
+  }
+}
+@media screen and (min-width: 1020px) {
+  #game-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40rem;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
   }
 }/*# sourceMappingURL=styles.css.map */

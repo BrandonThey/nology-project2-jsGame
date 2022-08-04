@@ -85,11 +85,8 @@ header {
     justify-content: center;
     width: 60%;
     button {
-        margin: 0;
-        min-width: 33%;
-        height: 11%;
         border-radius: 10px;
-        font-size: 15px;
+        font-size: 13px;
         word-wrap: break-word;
     }
 }
@@ -97,6 +94,9 @@ header {
 .case {
     color: black;
     background-color: silver;
+    min-width: 33%;
+    height: 11%;
+    margin: 0;
 }
 
 //bottom user prompt, briefcase, and restart button
@@ -243,13 +243,6 @@ header {
 }
 
 @media screen and(min-width: 760px) {
-    #case-display {
-        button {
-            width: 25%;
-            height: 14%;
-            font-size: 28px;
-        }
-    }
 
     #game-display {
         display: flex;
@@ -264,7 +257,12 @@ header {
             font-size: 25px;
         }
     }
-
+    .case{
+        min-width: 23%;
+        height: 12%;
+        font-size: 28px;
+        margin: 2px;
+    }
     #briefcase-display {
         display: flex;
         flex-direction: row;
@@ -285,5 +283,19 @@ header {
         button {
             font-size: 20px;
         }
+    }
+}
+@media screen and (min-width: 1020px) {
+    #game-display {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 40rem;
+    }
+    .case{
+        min-width: 23%;
+        height: 12%;
+        font-size: 28px;
+        margin: 2px;
     }
 }
