@@ -27,6 +27,8 @@
 //  7. A deal or no deal button
 
 //add confirmation prompt to restart button
+//add a how to play button and pop up with instructions on how to play the game
+//transition the background color of the case to be velvet with white text and silver border, then make that button not clickable
 
 const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
@@ -71,7 +73,9 @@ const handleInitializeGame = () => {
     //resetting all button texts to be their briefcase numbers
     for (let i = 0; i < briefcaseButtons.length; i++) {
         briefcaseButtons[i].innerHTML = `${i+1}`;
+        briefcaseButtons[i].classList.remove("opened")
         briefcaseButtons[i].classList.remove("hide")
+        briefcaseButtons[i].disabled = false;
     }
 
     while (cashAmountsArr.length > 0) {
@@ -139,6 +143,7 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
     if (personalBriefcaseIndex == -1) {
         personalBriefcaseIndex = i;
         briefcaseButtons[i].classList.add("hide");
+        briefcaseButtons[i].disabled = true;
         personalCase.innerHTML = `${i+1}`
         userPrompt.innerHTML = `Great choice! Now please choose a case to remove! You have ${amountToRemove} left to go!`
     } else {
@@ -148,7 +153,7 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
         userPrompt.innerHTML = `
         Briefcase #${i} had $${arrayOfBriefcases[i]}.
         You can remove ${amountToRemove} more.`;
-
+        briefcaseButtons[i].disabled = true;
         //looking through all the cash amounts to find the one that matches the eliminated briefcase in order to grey it out
         for (let j = 0; j < cashAmountDisplays.length; j++) {
             //getting the cash amount string from the html and removing all its commas
@@ -202,9 +207,9 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
 
         }
 
-        //hiding the briefcase with a delay as the play has eliminated it
+        //opening the briefcase with a delay as the player has eliminated it
         setTimeout(() => {
-            briefcaseButtons[i].classList.add("hide");
+            briefcaseButtons[i].classList.add("opened");
         }, 700)
         //zeroing out the value at i since the player has eliminated the case
         arrayOfBriefcases[i] = 0;

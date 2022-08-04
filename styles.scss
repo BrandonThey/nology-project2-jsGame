@@ -57,6 +57,7 @@ header {
     display: flex;
     flex-direction: row;
     height: 40rem;
+    min-width: 100%;
 }
 
 .cash-amounts {
@@ -82,19 +83,21 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
+    width: 60%;
     button {
         margin: 0;
-        width: 33%;
+        min-width: 33%;
         height: 11%;
-        background-color: silver;
         border-radius: 10px;
-        color: black;
         font-size: 15px;
         word-wrap: break-word;
     }
 }
 
+.case {
+    color: black;
+    background-color: silver;
+}
 
 //bottom user prompt, briefcase, and restart button
 #user-display {
@@ -209,13 +212,18 @@ header {
     transition: visibilty 0s linear 0s, opacity .25s 0s, transform .25s;
 }
 
-//hide class that hides cases after being eliminated
-.hide {
-    display: none;
-    background-color: white;
+//opened class that changes the color of cases after being opened
+.opened {
+    background-color: #902c3e;
+    border: 2px solid silver;
+    color: white;
     border-radius: 6px;
 }
 
+//hide class that hides the users personal case from the case display
+.hide {
+    display: none;
+}
 //grey out class that changes the background color of the
 //cash amounts on the sides after they have been eliminated
 .grey-out {
