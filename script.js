@@ -29,6 +29,7 @@ const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button");
 const personalCase = document.querySelector("#personal-case");
+const cashAmountDisplays = document.querySelectorAll("p");
 let arrayOfBriefcases = [];
 let casesRemoved = 0;
 let personalBriefcaseIndex = -1;
@@ -70,7 +71,6 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
         personalBriefcaseIndex = i;
         briefcaseButtons[i].classList.add("hide");
         personalCase.innerHTML = `${i+1}`
-        console.log(personalBriefcaseIndex);
         //personal briefcase remove from briefcase buttons
     } else {
         casesRemoved++;
@@ -79,6 +79,17 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
         Briefcase #${i} had $${arrayOfBriefcases[i]}.
         You can remove more.`;
         
+        //looking through all the cash amounts to find the one that matches the eliminated briefcase in order to grey it out
+        for (let j = 0; j < cashAmountDisplays.length; j++) {
+            //getting the cash amount string from the html and removing all its commas
+            let cashAmountWithoutCommas = cashAmountDisplays[j].innerHTML.replace(/,/g,"");
+            //removing the dollar sign from the string then converting it to a number to be compared
+            let numberedCashAmount = Number(cashAmountWithoutCommas.substring(1));
+            //if the cash amount displayed value is equal to that of the one in the case then grey it out
+            if(numberedCashAmount == arrayOfBriefcases[i]){
+                cashAmountDisplays[j].classList.add("grey-out");
+            }
+        }
 
         if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
             casesRemoved >= 20){
