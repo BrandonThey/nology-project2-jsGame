@@ -27,9 +27,11 @@
 
 const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
-const restartButton = document.querySelector("#restart-button")
+const restartButton = document.querySelector("#restart-button");
+const personalCase = document.querySelector("#personal-case");
 let arrayOfBriefcases = [];
 let casesRemoved = 0;
+let personalBriefcaseIndex = -1;
 const handleInitializeGame = () =>{
     //an array of possible cash amounts the user can remove or win
     const cashAmountsArr = [.01,1,5,10,25,50,75,100,200,300,400,500,750,
@@ -60,19 +62,33 @@ const handleInitializeGame = () =>{
 
 //initializing the array of briefcases on page startup
 handleInitializeGame();
-console.log(arrayOfBriefcases);
 
 const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
-    casesRemoved++;
-    briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
-    userPrompt.innerHTML = `
-    Briefcase #${i} had $${arrayOfBriefcases[i]}.
-    You can remove more.`;
+    
+    //getting the user's chosen personal briefcase
+    if (personalBriefcaseIndex == -1){
+        personalBriefcaseIndex = i;
+        briefcaseButtons[i].classList.add("hide");
+        personalCase.innerHTML = `${i+1}`
+        console.log(personalBriefcaseIndex);
+        //personal briefcase remove from briefcase buttons
+    } else {
+        casesRemoved++;
+        briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
+        userPrompt.innerHTML = `
+        Briefcase #${i} had $${arrayOfBriefcases[i]}.
+        You can remove more.`;
+        
 
-    if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
-        casesRemoved >= 20){
-        alert("The banker is calling");
+        if(casesRemoved == 6 || casesRemoved == 11 || casesRemoved == 15 || casesRemoved == 18 ||
+            casesRemoved >= 20){
+            //adding a delay so the user can see what briefcase they removed
+            setTimeout(() => {
+                alert("The banker is calling");
+            }, 500);
+        }
     }
+
     //fade out array of cash amounts 
 }
 

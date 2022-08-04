@@ -80,4 +80,8 @@ body {
   height: 100%;
   background-color: gold;
   border-radius: 10px;
+}
+
+.hide {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */
