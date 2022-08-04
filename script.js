@@ -35,6 +35,9 @@ const personalCase = document.querySelector("#personal-case");
 const cashAmountDisplays = document.querySelectorAll("p");
 const bankerPopup = document.querySelector(".banker-modal");
 const bankerOffer = document.querySelector("#banker-offer");
+const dealButton  = document.querySelector("#deal-button");
+const noDealButton = document.querySelector("#no-deal-button");
+
 //creating variables: arrayOfBriefcases, an array of "briefcases" that serves to hold the briefcase number (index) and cash amounts inside (values)
 //casesRemoved, the number of cases a user has removed
 //personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
@@ -210,6 +213,15 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
     //fade out array of cash amounts 
 }
 
+const handleDealOrNoDeal = (isDeal) => {
+    bankerPopup.classList.toggle("show-modal");
+    if(isDeal){
+        console.log("Congrats")
+    } else{
+        console.log("Lets Keep Playing")
+    }
+}
+
 for (let i = 0; i < briefcaseButtons.length; i++) {
     briefcaseButtons[i].addEventListener("click", () => {
         handleBriefcaseClick(briefcaseButtons, i, arrayOfBriefcases);
@@ -217,3 +229,10 @@ for (let i = 0; i < briefcaseButtons.length; i++) {
 }
 
 restartButton.addEventListener("click", handleInitializeGame);
+dealButton.addEventListener("click", () => {
+    handleDealOrNoDeal(true);
+});
+
+noDealButton.addEventListener("click", () =>{
+    handleDealOrNoDeal(false);
+});
