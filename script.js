@@ -7,7 +7,8 @@
 //  Step 6: if no deal repeat steps 2-4 until one case remains
 //  Step 7: the user is given one last chance to swap cases with the last remaining case
 //  Step 8: user wins amount in their selected case
-//  Step 9: all remaining cases are shown
+
+//  Step 9: If deal: all remaining cases are shown
 
 // Components needed:
 //  1. Case Data Structure: 
@@ -117,7 +118,11 @@ const handleBankerOffer = () => {
             offer = Math.round(sum / leftoverCashAmounts.length);
     }
     
-    alert(`The Banker would like to offer you $${offer}`)
+    if(confirm(`The Banker would like to offer you $${offer}`)){
+        userPrompt.innerHTML = "Congrats!"
+    } else{
+        userPrompt.innerHTML = "Alright!"
+    }
 }
 
 //initializing the array of briefcases on page startup
@@ -157,24 +162,38 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) =>{
             //switch statement that determines how many more cases the user can remove before getting another call
             switch(casesRemoved){
                 case 6:
+                    //adding a delay so the user can see what briefcase they removed
+                    setTimeout(handleBankerOffer, 500);
                     amountToRemove = 5;
                     break;
                 case 11:
+                    //adding a delay so the user can see what briefcase they removed
+                    setTimeout(handleBankerOffer, 500);
                     amountToRemove = 4;
                     break;
                 case 15:
+                    //adding a delay so the user can see what briefcase they removed
+                    setTimeout(handleBankerOffer, 500);
                     amountToRemove = 3;
                     break;
                 case 18:
+                    //adding a delay so the user can see what briefcase they removed
+                    setTimeout(handleBankerOffer, 500);
                     amountToRemove = 2;
                     break;
+                case 24: //if the user has removed all but one case, they have an option to switch cases
+                    userPrompt.innerHTML = "Nicely done! You now have a choice... will you switch cases or keep your current one?";
+                    
+                    
+                    
+                    userPrompt.innerHTML = "Thank you for playing Deal Or No Deal!"
+                    handleInitializeGame();
                 default:
+                    //adding a delay so the user can see what briefcase they removed
+                    setTimeout(handleBankerOffer, 500);
                     amountToRemove = 1;
                     break;
             }
-
-            //adding a delay so the user can see what briefcase they removed
-            setTimeout(handleBankerOffer, 500);
 
         }
 
