@@ -33,13 +33,15 @@
 const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button");
-const personalCase = document.querySelector("#personal-case");
+const personalCase = document.querySelector(".personal-case");
 const cashAmountDisplays = document.querySelectorAll("p");
 const bankerPopup = document.querySelector(".banker-modal");
 const bankerOffer = document.querySelector("#banker-offer");
 const dealButton  = document.querySelector("#deal-button");
 const noDealButton = document.querySelector("#no-deal-button");
-
+const howToButton = document.querySelector("#how-to-play-button");
+const howToPopup = document.querySelector(".how-to-modal");
+const closebutton = document.querySelector("#close-out-button");
 //creating variables: arrayOfBriefcases, an array of "briefcases" that serves to hold the briefcase number (index) and cash amounts inside (values)
 //casesRemoved, the number of cases a user has removed
 //personalBriefCaseIndex, the index in the arrayofBriefcases the user chose as their personal one
@@ -194,12 +196,11 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
                 case 24: //if the user has removed all but one case, they have an option to switch cases
                     bankerOffer.innerHTML = "Nicely done! You now have a choice... will you switch cases or keep your current one?";
                     dealButton.innerHTML = "Switch";
-                    dealButton.innerHTML = "Don't Switch";
+                    noDealButton.innerHTML = "Don't Switch";
                     bankerPopup.classList.toggle("show-modal");
-                    
-                    dealButton.innerHTML = "Deal";
-                    dealButton.innerHTML = "No Deal";
+
                     userPrompt.innerHTML = "Thank you for playing Deal Or No Deal! Press the restart button for a new game!";
+                    break;
                 default:
                     //adding a delay so the user can see what briefcase they removed
                     setTimeout(handleBankerOffer, 500);
@@ -224,26 +225,29 @@ const handlePopup = (isDeal, dealButton) => {
     if(isDeal && dealButton.innerHTML == "Deal"){
         console.log("Congrats");
     } else if(isDeal && dealButton.innerHTML == "Switch"){
-        console.log("You decided to switch so lets see what your new case holds!");
+        userPrompt.innerHTML = "You decided to switch so lets see what your new case holds!";
         for (let i = 0; i < arrayOfBriefcases.length; i++) {
             if(arrayOfBriefcases[i] != 0 && arrayOfBriefcases[i] != arrayOfBriefcases[personalBriefcaseIndex]){
                 setTimeout(() => {
                     personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
-                    personalCase.classList.add("grey-out")
+                    personalCase.classList.add("opened")
                 }, 1000);
             }
-        }
+        };
+        dealButton.innerHTML = "Deal";
+        noDealButton.innerHTML = "No Deal";
     } else if(!isDeal && dealButton.innerHTML == "No Deal"){
-        console.log("NO DEAL");
+        console.log("NO DEAL");;
     } else if(!isDeal && dealButton.innerHTML == "Don't Switch"){
-        console.log("Not Switching");
         userPrompt.innerHTML("You decided not to switch so lets see what your case holds!");
         setTimeout(() => {
             personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
-            personalCase.classList.add("grey-out")
-        }, 1000);
+            personalCase.classList.add("opened")
+        }, 1000);;
+        dealButton.innerHTML = "Deal";
+        noDealButton.innerHTML = "No Deal";
     } else{
-        console.log("Else");
+        console.log("Else");;
     }
     bankerPopup.classList.toggle("show-modal");
 }
@@ -267,3 +271,12 @@ dealButton.addEventListener("click", () => {
 noDealButton.addEventListener("click", () =>{
     handlePopup(false, noDealButton);
 });
+
+const toggleModal = () => {
+    howToPopup.classList.add("show-modal");
+}
+howToButton.addEventListener("click", toggleModal)
+
+closebutton.addEventListener("click", () => {
+    howToPopup.classList.remove("show-modal");
+})

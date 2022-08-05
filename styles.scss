@@ -121,11 +121,13 @@ header {
     button {
         min-width: 75%;
         height: 100%;
-        background-color: silver;
-        border-radius: 10px;
-        color: black;
         font-size: 25px;
     }
+}
+.personal-case {
+    background-color: silver;
+    border-radius: 10px;
+    color: black;
 }
 
 #user-prompt-display {
@@ -141,6 +143,17 @@ header {
 }
 
 #restart-button {
+    width: 25%;
+
+    button {
+        width: 100%;
+        height: 100%;
+        background-color: gold;
+        border-radius: 10px;
+    }
+}
+
+#how-to-play-button {
     width: 25%;
 
     button {
@@ -198,8 +211,8 @@ header {
 }
 
 #deal-button{
-    background-color: gold;
-    color: black;
+    background-color: black;
+    color: gold;
 }
 
 #no-deal-button{
@@ -208,13 +221,58 @@ header {
     border: 2px solid gold;
 }
 
+//how to play modal
+.how-to-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    overflow-y: auto;
+
+    div{
+        h2 {
+            background-color: goldenrod;
+            text-align: center;
+        }
+        p{
+            background-color: goldenrod;
+            border-bottom: 4px solid black;
+            text-align: center;
+        }
+        ol {
+            background-color: goldenrod;
+            li {
+                background-color: goldenrod;
+                border-bottom: 2px solid black;
+                text-align: center;
+                padding: 4px;
+            }
+        }
+    }
+}
+
+#close-out-button{
+    background-color: goldenrod;
+    color: black;
+    float: right;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
 .show-modal{
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
     transition: visibilty 0s linear 0s, opacity .25s 0s, transform .25s;
 }
-
 //opened class that changes the color of cases after being opened
 .opened {
     background-color: #902c3e;
@@ -233,7 +291,6 @@ header {
     background-color: rgb(135, 102, 20);
     border: 2px solid rgb(135, 102, 20);
     color: black;
-
 }
 
 //animation class to handle the animations of cases opening
