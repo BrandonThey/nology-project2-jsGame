@@ -92,13 +92,15 @@ header {
     width: 60%;
     button {
         border-radius: 10px;
-        font-size: 13px;
+        font-size: 20px;
         word-wrap: break-word;
     }
 }
 
 .case {
     color: black;
+    background-image: url("./silver_metal_briefcase_312110.jpg");
+    background-size: cover;
     background-color: silver;
     min-width: 33%;
     height: 11%;
@@ -132,6 +134,8 @@ header {
     }
 }
 .personal-case {
+    background-image: url("./silver_metal_briefcase_312110.jpg");
+    background-size: cover;
     background-color: silver;
     border-radius: 10px;
     color: black;
@@ -188,6 +192,7 @@ header {
 
 // Banker pop up css
 .banker-modal{
+    z-index: 1;
     position: fixed;
     left: 0;
     top: 0;
@@ -254,7 +259,7 @@ header {
     visibility: hidden;
     transform: scale(1.1);
     overflow-y: auto;
-
+    z-index: 1;
     div{
         h2 {
             background-color: goldenrod;
@@ -296,6 +301,7 @@ header {
 }
 //opened class that changes the color of cases after being opened
 .opened {
+    background-image: none;
     background-color: #902c3e;
     border: 2px solid silver;
     color: white;
