@@ -80,6 +80,7 @@ header {
 .amount{
     background-color: gold;
     border: 2px solid gold;
+    transition: background-color 2s;
 }
 
 #case-display {
@@ -102,6 +103,10 @@ header {
     min-width: 33%;
     height: 11%;
     margin: 0;
+    transition: transform .5s, opacity .5s, background-color 1s;
+}
+.case:hover {
+    cursor: pointer;
 }
 
 //bottom user prompt, briefcase, and restart button
@@ -154,6 +159,13 @@ header {
         border-radius: 10px;
     }
 }
+#restart-button:hover {
+    button{
+        cursor: pointer;
+        background-color: goldenrod;
+        border-radius: 10px;
+    }
+}
 
 #how-to-play-button {
     width: 25%;
@@ -163,9 +175,16 @@ header {
         height: 100%;
         background-color: gold;
         border-radius: 10px;
+        font-size: 20px;
     }
 }
-
+#how-to-play-button:hover {
+    button{
+        cursor: pointer;
+        background-color: goldenrod;
+        border-radius: 10px;
+    }
+}
 
 // Banker pop up css
 .banker-modal{
@@ -281,8 +300,11 @@ header {
     border: 2px solid silver;
     color: white;
     border-radius: 6px;
+    transform: rotateX(360deg);
 }
-
+.opened:hover {
+    cursor:default;
+}
 //hide class that hides the users personal case from the case display
 .hide {
     display: none;
