@@ -69,12 +69,15 @@ header {
     p {
         text-align: center;
         margin: 5px;
-        border: 2px solid gold;
-        background-color: gold;
         border-radius: 2px;
         height: 6.18%;
         font-size: 9px;
     }
+}
+
+.amount{
+    background-color: gold;
+    border: 2px solid gold;
 }
 
 #case-display {
@@ -227,8 +230,10 @@ header {
 //grey out class that changes the background color of the
 //cash amounts on the sides after they have been eliminated
 .grey-out {
-    background-color: white;
-    color: white;
+    background-color: rgb(135, 102, 20);
+    border: 2px solid rgb(135, 102, 20);
+    color: black;
+
 }
 
 //animation class to handle the animations of cases opening

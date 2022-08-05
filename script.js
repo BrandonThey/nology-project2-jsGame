@@ -192,12 +192,14 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
                     amountToRemove = 2;
                     break;
                 case 24: //if the user has removed all but one case, they have an option to switch cases
-                    userPrompt.innerHTML = "Nicely done! You now have a choice... will you switch cases or keep your current one?";
-
-
-
-                    userPrompt.innerHTML = "Thank you for playing Deal Or No Deal!"
-                    handleInitializeGame();
+                    bankerOffer.innerHTML = "Nicely done! You now have a choice... will you switch cases or keep your current one?";
+                    dealButton.innerHTML = "Switch";
+                    dealButton.innerHTML = "Don't Switch";
+                    bankerPopup.classList.toggle("show-modal");
+                    
+                    dealButton.innerHTML = "Deal";
+                    dealButton.innerHTML = "No Deal";
+                    userPrompt.innerHTML = "Thank you for playing Deal Or No Deal! Press the restart button for a new game!";
                 default:
                     //adding a delay so the user can see what briefcase they removed
                     setTimeout(handleBankerOffer, 500);
@@ -218,13 +220,32 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
     //fade out array of cash amounts 
 }
 
-const handleDealOrNoDeal = (isDeal) => {
-    bankerPopup.classList.toggle("show-modal");
-    if(isDeal){
-        console.log("Congrats")
+const handlePopup = (isDeal, dealButton) => {
+    if(isDeal && dealButton.innerHTML == "Deal"){
+        console.log("Congrats");
+    } else if(isDeal && dealButton.innerHTML == "Switch"){
+        console.log("You decided to switch so lets see what your new case holds!");
+        for (let i = 0; i < arrayOfBriefcases.length; i++) {
+            if(arrayOfBriefcases[i] != 0 && arrayOfBriefcases[i] != arrayOfBriefcases[personalBriefcaseIndex]){
+                setTimeout(() => {
+                    personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
+                    personalCase.classList.add("grey-out")
+                }, 1000);
+            }
+        }
+    } else if(!isDeal && dealButton.innerHTML == "No Deal"){
+        console.log("NO DEAL");
+    } else if(!isDeal && dealButton.innerHTML == "Don't Switch"){
+        console.log("Not Switching");
+        userPrompt.innerHTML("You decided not to switch so lets see what your case holds!");
+        setTimeout(() => {
+            personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
+            personalCase.classList.add("grey-out")
+        }, 1000);
     } else{
-        console.log("Lets Keep Playing")
+        console.log("Else");
     }
+    bankerPopup.classList.toggle("show-modal");
 }
 
 for (let i = 0; i < briefcaseButtons.length; i++) {
@@ -233,11 +254,16 @@ for (let i = 0; i < briefcaseButtons.length; i++) {
     })
 }
 
-restartButton.addEventListener("click", handleInitializeGame);
+restartButton.addEventListener("click", ()=>{
+    if(confirm("Are you sure you want to restart the game?") == true){
+        handleInitializeGame();
+    }
+});
+
 dealButton.addEventListener("click", () => {
-    handleDealOrNoDeal(true);
+    handlePopup(true, dealButton);
 });
 
 noDealButton.addEventListener("click", () =>{
-    handleDealOrNoDeal(false);
+    handlePopup(false, noDealButton);
 });

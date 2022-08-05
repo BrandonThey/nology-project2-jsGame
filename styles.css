@@ -60,11 +60,14 @@ header div h2:nth-of-type(3) {
 .cash-amounts p {
   text-align: center;
   margin: 5px;
-  border: 2px solid gold;
-  background-color: gold;
   border-radius: 2px;
   height: 6.18%;
   font-size: 9px;
+}
+
+.amount {
+  background-color: gold;
+  border: 2px solid gold;
 }
 
 #case-display {
@@ -206,8 +209,9 @@ header div h2:nth-of-type(3) {
 }
 
 .grey-out {
-  background-color: white;
-  color: white;
+  background-color: rgb(135, 102, 20);
+  border: 2px solid rgb(135, 102, 20);
+  color: black;
 }
 
 .animation {
