@@ -231,7 +231,7 @@ const handlePopup = (isDeal, dealButton) => {
         for (let i = 0; i < arrayOfBriefcases.length; i++) {
             if(arrayOfBriefcases[i] != 0 && arrayOfBriefcases[i] != arrayOfBriefcases[personalBriefcaseIndex]){
                 setTimeout(() => {
-                    personalCase.innerHTML = `$${arrayOfBriefcases[i]}`
+                    personalCase.innerHTML = `$${arrayOfBriefcases[i++]}`
                     personalCase.classList.add("opened")
                     userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[i]} from case ${i}!!`
                 }, 3000);
@@ -247,12 +247,12 @@ const handlePopup = (isDeal, dealButton) => {
         setTimeout(() => {
             personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
             personalCase.classList.add("opened")
-        }, 3000);;
-        userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[personalBriefcaseIndex]}`;
+        }, 3000);
+        userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[personalBriefcaseIndex]} from your briefcase!!`;
         dealButton.innerHTML = "Deal";
         noDealButton.innerHTML = "No Deal";
     } else{
-        console.log("Else");;
+        console.log("Else");
     }
     bankerPopup.classList.toggle("show-modal");
 }

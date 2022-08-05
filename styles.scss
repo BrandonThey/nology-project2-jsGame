@@ -10,7 +10,8 @@ $primary-font: "Oswald";
 
 body {
     min-height: 100%;
-    margin-top: 10px;
+    padding-top: 10px;
+    background-color: black;
 }
 
 header {
@@ -19,6 +20,7 @@ header {
     height: 28px;
 
     div {
+        background-color: black;
         margin-top: 0;
         height: 100%;
         display: flex;
@@ -29,7 +31,7 @@ header {
             border: 2px solid gold;
             color: white;
             font-size: 18px;
-            width: 100%;
+            width: 30%;
             text-align: center;
         }
 
