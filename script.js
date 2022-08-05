@@ -201,6 +201,8 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
 
                     userPrompt.innerHTML = "Thank you for playing Deal Or No Deal! Press the restart button for a new game!";
                     break;
+                case 25:
+                    break;
                 default:
                     //adding a delay so the user can see what briefcase they removed
                     setTimeout(handleBankerOffer, 500);
@@ -223,27 +225,30 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
 
 const handlePopup = (isDeal, dealButton) => {
     if(isDeal && dealButton.innerHTML == "Deal"){
-        console.log("Congrats");
+        userPrompt.innerHTML = `Congrats!! You won ${offer}!!! Thank you for playing! You can continue playing to see your chances!`
     } else if(isDeal && dealButton.innerHTML == "Switch"){
-        userPrompt.innerHTML = "You decided to switch so lets see what your new case holds!";
+        userPrompt.innerHTML = "You decided to switch you case so lets see what your new case holds!";
         for (let i = 0; i < arrayOfBriefcases.length; i++) {
             if(arrayOfBriefcases[i] != 0 && arrayOfBriefcases[i] != arrayOfBriefcases[personalBriefcaseIndex]){
                 setTimeout(() => {
-                    personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
+                    personalCase.innerHTML = `$${arrayOfBriefcases[i]}`
                     personalCase.classList.add("opened")
-                }, 1000);
+                    userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[i]} from case ${i}!!`
+                }, 3000);
             }
         };
+        
         dealButton.innerHTML = "Deal";
         noDealButton.innerHTML = "No Deal";
     } else if(!isDeal && dealButton.innerHTML == "No Deal"){
-        console.log("NO DEAL");;
+        userPrompt.innerHTML = `Alright! Let's keep playing! You can choose ${amountToRemove} more cases!` 
     } else if(!isDeal && dealButton.innerHTML == "Don't Switch"){
         userPrompt.innerHTML("You decided not to switch so lets see what your case holds!");
         setTimeout(() => {
             personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
             personalCase.classList.add("opened")
-        }, 1000);;
+        }, 3000);;
+        userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[personalBriefcaseIndex]}`;
         dealButton.innerHTML = "Deal";
         noDealButton.innerHTML = "No Deal";
     } else{
