@@ -8,8 +8,6 @@
 //  Step 7: the user is given one last chance to swap cases with the last remaining case
 //  Step 8: user wins amount in their selected case
 
-//  Step 9: If deal: all remaining cases are shown
-
 // Components needed:
 //  1. Case Data Structure: 
 //      We could structure the rows of cases as a 2d array of objects with a case number and amount in the case
@@ -95,33 +93,31 @@ const handleBankerOffer = () => {
     leftoverCashAmounts = leftoverCashAmounts.sort((a, b) => a - b);
 
     let sum = 0;
-    // //finding a rough median by sorting the array then getting the index based on how many amounts are left
-    // leftoverCashAmounts.sort((a,b) => a-b);
-    // console.log(leftoverCashAmounts.length)
-    // let medianIndex = 0, extraToRemoveIndex = 0;
+
     switch (leftoverCashAmounts.length) {
         //averaging up only portions of the array based on how many cases are left
         //for example if there are 20 cases left only average the first 5 cases, otherwise sum them all up
         //this is an attempt to replicate the bankers lowball offers
-        case 20:
+        
+        case 21:
             for (let i = 0; i < 6; i++) {
                 sum += leftoverCashAmounts[i];
             }
             offer = Math.round(sum / 5);
             break;
-        case 15:
+        case 16:
             for (let i = 0; i < 8; i++) {
                 sum += leftoverCashAmounts[i];
             }
             offer = Math.round(sum / 5);
             break;
-        case 11:
+        case 17:
             for (let i = 0; i < 8; i++) {
                 sum += leftoverCashAmounts[i];
             }
             offer = Math.round(sum / 5);
             break;
-        case 8:
+        case 9:
             for (let i = 0; i < 6; i++) {
                 sum += leftoverCashAmounts[i];
             }
@@ -151,10 +147,12 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
     } else {
         casesRemoved++;
         amountToRemove--;
-        briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
-        userPrompt.innerHTML = `
-        Briefcase #${i} had $${arrayOfBriefcases[i]}.
-        You can remove ${amountToRemove} more.`;
+        setTimeout(() => {
+            briefcaseButtons[i].innerHTML = `$${arrayOfBriefcases[i]}`
+            userPrompt.innerHTML = `
+            Briefcase #${i} had $${arrayOfBriefcases[i]}.
+            You can remove ${amountToRemove} more.`;          
+        },700)
         briefcaseButtons[i].disabled = true;
         //looking through all the cash amounts to find the one that matches the eliminated briefcase in order to grey it out
         for (let j = 0; j < cashAmountDisplays.length; j++) {
@@ -175,22 +173,22 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
             switch (casesRemoved) {
                 case 6:
                     //adding a delay so the user can see what briefcase they removed
-                    setTimeout(handleBankerOffer, 500);
+                    setTimeout(handleBankerOffer, 800);
                     amountToRemove = 5;
                     break;
                 case 11:
                     //adding a delay so the user can see what briefcase they removed
-                    setTimeout(handleBankerOffer, 500);
+                    setTimeout(handleBankerOffer, 800);
                     amountToRemove = 4;
                     break;
                 case 15:
                     //adding a delay so the user can see what briefcase they removed
-                    setTimeout(handleBankerOffer, 500);
+                    setTimeout(handleBankerOffer, 800);
                     amountToRemove = 3;
                     break;
                 case 18:
                     //adding a delay so the user can see what briefcase they removed
-                    setTimeout(handleBankerOffer, 500);
+                    setTimeout(handleBankerOffer, 800);
                     amountToRemove = 2;
                     break;
                 case 24: //if the user has removed all but one case, they have an option to switch cases
@@ -205,7 +203,7 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
                     break;
                 default:
                     //adding a delay so the user can see what briefcase they removed
-                    setTimeout(handleBankerOffer, 500);
+                    setTimeout(handleBankerOffer, 800);
                     amountToRemove = 1;
                     break;
             }
@@ -217,7 +215,9 @@ const handleBriefcaseClick = (briefcaseButtons, i, arrayOfBriefcases) => {
             briefcaseButtons[i].classList.add("opened");
         }, 700)
         //zeroing out the value at i since the player has eliminated the case
-        arrayOfBriefcases[i] = 0;
+        setTimeout(() => {
+            arrayOfBriefcases[i] = 0;
+        },1500)
     }
 
     //fade out array of cash amounts 
