@@ -1,50 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
-@media screen and (min-width: 760px) {
-  #game-display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40rem;
-  }
-  .cash-amounts p {
-    text-align: right;
-    font-size: 25px;
-  }
-  .case {
-    min-width: 23%;
-    height: 12%;
-    font-size: 28px;
-    margin: 2px;
-  }
-  #briefcase-display {
-    display: flex;
-    flex-direction: row;
-    font-size: 15px;
-  }
-  #briefcase-display button {
-    min-width: 60%;
-  }
-  #user-prompt-display h2 {
-    font-size: 15px;
-  }
-  #restart-button button {
-    font-size: 20px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: "Oswald", sans-serif;
 }
-@media screen and (min-width: 1020px) {
-  #game-display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40rem;
-  }
-  .case {
-    min-width: 23%;
-    height: 12%;
-    font-size: 28px;
-    margin: 2px;
-  }
+
+body {
+  min-height: 100%;
+  padding-top: 10px;
+  background-color: black;
 }
+
 #game-display {
   display: flex;
   flex-direction: row;
@@ -310,19 +277,52 @@
   border-radius: 10px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  font-family: "Oswald", sans-serif;
+@media screen and (min-width: 760px) {
+  #game-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40rem;
+  }
+  .cash-amounts p {
+    text-align: right;
+    font-size: 25px;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
+  }
+  #briefcase-display {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+  }
+  #briefcase-display button {
+    min-width: 60%;
+  }
+  #user-prompt-display h2 {
+    font-size: 15px;
+  }
+  #restart-button button {
+    font-size: 20px;
+  }
 }
-
-body {
-  min-height: 100%;
-  padding-top: 10px;
-  background-color: black;
+@media screen and (min-width: 1020px) {
+  #game-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40rem;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
+  }
 }
-
 header {
   margin-bottom: 10px;
   width: 100%;
