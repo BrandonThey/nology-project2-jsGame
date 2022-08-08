@@ -28,9 +28,6 @@
 //add a how to play button and pop up with instructions on how to play the game
 //transition the background color of the case to be velvet with white text and silver border, then make that button not clickable
 
-//TO-DO: Crop out white space in case images
-//add phone call to imitate the banker calling
-
 const briefcaseButtons = document.querySelectorAll(".case");
 const userPrompt = document.querySelector("#user-prompt");
 const restartButton = document.querySelector("#restart-button");
