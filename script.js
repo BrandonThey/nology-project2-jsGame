@@ -97,16 +97,15 @@ const handleInitializeGame = () => {
 }
 
 const playAudio = () => {
-    console.log("Audio is playing")
     let audio = new Audio("./resources/banker_ringing.mp3");
     audio.play();
 
-    // int = setInterval(() => {
-    //     if(audio.currentTime > .4){
-    //         audio.pause();
-    //         clearInterval(int);
-    //     }
-    // },10);
+    int = setInterval(() => {
+        if(audio.currentTime > .8){
+            audio.pause();
+            clearInterval(int);
+        }
+    },10);
 }
 
 const handleBankerOffer = () => {
@@ -219,6 +218,8 @@ const testCasesRemoved = (casesRemoved, amountToRemove) =>{
             //setting up the next time the banker calls
             break;
     }
+
+    return amountToRemove;
 }
 
 const handleBriefCase = (briefcaseButtons, i, arrayOfBriefcases) => {
@@ -253,7 +254,7 @@ const handleBriefCase = (briefcaseButtons, i, arrayOfBriefcases) => {
         casesRemoved >= 20) {
         //prompting the user and calling the test cases removed to handle some more testing
         userPrompt.innerHTML = "Woah what a game! Now the Banker is calling to give you an offer! Will you say deal or no deal?"
-        testCasesRemoved(casesRemoved, amountToRemove);
+        amountToRemove = testCasesRemoved(casesRemoved, amountToRemove);
     }
 
     //opening the briefcase with a delay as the player has eliminated it
@@ -324,7 +325,6 @@ const handlePopup = (isDeal, dealButton) => {
 for (let i = 0; i < briefcaseButtons.length; i++) {
     briefcaseButtons[i].addEventListener("click", () => {
         handleBriefcaseClick(briefcaseButtons, i, arrayOfBriefcases);
-        playAudio();
     })
 }
 
