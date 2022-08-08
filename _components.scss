@@ -24,7 +24,7 @@
 .amount{
     background-color: $secondary-color;
     border: 2px solid $secondary-color;
-    transition: background-color 2s;
+    transition: background-color 2s, transform 1s;
 }
 
 #case-display {
@@ -264,6 +264,7 @@
     background-color: $secondary-color-greyed;
     border: 2px solid $secondary-color-greyed;
     color: $primary-color;
+    transform: rotateX(360deg);
 }
 
 //animation class to handle the animations of cases opening

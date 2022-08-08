@@ -36,7 +36,7 @@ body {
 .amount {
   background-color: gold;
   border: 2px solid gold;
-  transition: background-color 2s;
+  transition: background-color 2s, transform 1s;
 }
 
 #case-display {
@@ -265,6 +265,7 @@ body {
   background-color: rgb(135, 102, 20);
   border: 2px solid rgb(135, 102, 20);
   color: black;
+  transform: rotateX(360deg);
 }
 
 .animation {
