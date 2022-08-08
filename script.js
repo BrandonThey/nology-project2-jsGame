@@ -30,8 +30,6 @@
 
 //TO-DO: Crop out white space in case images
 //Adjust sizes of buttons for larger screens
-//Refactor code to make smaller functions
-//comment all code
 //add phone call to imitate the banker calling
 
 const briefcaseButtons = document.querySelectorAll(".case");

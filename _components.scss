@@ -1,0 +1,279 @@
+//main game display that shows cases and side amounts
+#game-display {
+    display: flex;
+    flex-direction: row;
+    height: 40rem;
+    min-width: 100%;
+}
+
+.cash-amounts {
+    margin: 0;
+    border: 3px solid $secondary-color;
+    min-width: 20%;
+    height: 99%;
+
+    p {
+        text-align: center;
+        margin: 5px;
+        border-radius: 2px;
+        height: 6.18%;
+        font-size: 9px;
+    }
+}
+
+.amount{
+    background-color: $secondary-color;
+    border: 2px solid $secondary-color;
+    transition: background-color 2s;
+}
+
+#case-display {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+    button {
+        border-radius: 10px;
+        font-size: 20px;
+        word-wrap: break-word;
+    }
+}
+
+.case {
+    color: $primary-color;
+    background-image: url("./silver_metal_briefcase_312110.jpg");
+    background-size: cover;
+    background-color: silver;
+    min-width: 33%;
+    height: 11%;
+    margin: 0;
+    transition: transform .5s, opacity .5s, background-color 1s;
+}
+.case:hover {
+    cursor: pointer;
+}
+
+//bottom user prompt, briefcase, and restart button
+#user-display {
+    border: 3px solid $secondary-color;
+    display: flex;
+    height: 4rem;
+    font-size: 7px;
+}
+
+#briefcase-display {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-right: 5px solid $secondary-color;
+    min-width: 30%;
+    align-items: center;
+
+    button {
+        min-width: 75%;
+        height: 100%;
+        font-size: 25px;
+    }
+}
+.personal-case {
+    background-image: url("./silver_metal_briefcase_312110.jpg");
+    background-size: cover;
+    background-color: silver;
+    border-radius: 10px;
+    color: $primary-color;
+}
+
+#user-prompt-display {
+    color: white;
+    width: 75%;
+
+    h2 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+}
+
+#restart-button {
+    width: 25%;
+
+    button {
+        width: 100%;
+        height: 100%;
+        background-color: $secondary-color;
+        border-radius: 10px;
+    }
+}
+#restart-button:hover {
+    button{
+        cursor: pointer;
+        background-color: $secondary-color-darkened;
+        border-radius: 10px;
+    }
+}
+
+#how-to-play-button {
+    width: 25%;
+
+    button {
+        width: 100%;
+        height: 100%;
+        background-color: $secondary-color;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+}
+#how-to-play-button:hover {
+    button{
+        cursor: pointer;
+        background-color: $secondary-color-darkened;
+        border-radius: 10px;
+    }
+}
+
+// Banker pop up css
+.banker-modal{
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+}
+
+.modal-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: $secondary-color-darkened;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: .5rem;
+    h2{
+        background-color: $secondary-color-darkened;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    div{
+        background-color: $secondary-color-darkened;
+        display: flex;
+        justify-content: space-around;
+        p{
+            background-color: $secondary-color-darkened;
+        }
+        button{
+            float: right;
+            width: 30%;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+    }
+}
+
+#deal-button{
+    background-color: $primary-color;
+    color: $secondary-color;
+}
+
+#no-deal-button{
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: 2px solid $secondary-color;
+}
+
+//how to play modal
+.how-to-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    overflow-y: auto;
+    z-index: 1;
+    div{
+        h2 {
+            background-color: $secondary-color-darkened;
+            text-align: center;
+        }
+        p{
+            background-color: $secondary-color-darkened;
+            border-bottom: 4px solid $primary-color;
+            text-align: center;
+        }
+        ol {
+            background-color: $secondary-color-darkened;
+            li {
+                background-color: $secondary-color-darkened;
+                border-bottom: 2px solid $primary-color;
+                text-align: center;
+                padding: 4px;
+            }
+        }
+    }
+}
+
+#close-out-button{
+    background-color: $secondary-color-darkened;
+    color: $primary-color;
+    float: right;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.show-modal{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibilty 0s linear 0s, opacity .25s 0s, transform .25s;
+}
+//opened class that changes the color of cases after being opened
+.opened {
+    background-image: none;
+    background-color: #902c3e;
+    border: 2px solid silver;
+    color: white;
+    border-radius: 6px;
+    transform: rotateX(360deg);
+}
+.opened:hover {
+    cursor:default;
+}
+//hide class that hides the users personal case from the case display
+.hide {
+    display: none;
+}
+//grey out class that changes the background color of the
+//cash amounts on the sides after they have been eliminated
+.grey-out {
+    background-color: $secondary-color-greyed;
+    border: 2px solid $secondary-color-greyed;
+    color: $primary-color;
+}
+
+//animation class to handle the animations of cases opening
+.animation {
+    background-color: #902c3e;
+    color: white;
+    border: 4px solid silver;
+
+    min-width: 24%;
+    height: 13%;
+    border-radius: 10px;
+}

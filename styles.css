@@ -1,51 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  font-family: "Oswald", sans-serif;
+@media screen and (min-width: 760px) {
+  #game-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40rem;
+  }
+  .cash-amounts p {
+    text-align: right;
+    font-size: 25px;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
+  }
+  #briefcase-display {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+  }
+  #briefcase-display button {
+    min-width: 60%;
+  }
+  #user-prompt-display h2 {
+    font-size: 15px;
+  }
+  #restart-button button {
+    font-size: 20px;
+  }
 }
-
-body {
-  min-height: 100%;
-  padding-top: 10px;
-  background-color: black;
+@media screen and (min-width: 1020px) {
+  #game-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40rem;
+  }
+  .case {
+    min-width: 23%;
+    height: 12%;
+    font-size: 28px;
+    margin: 2px;
+  }
 }
-
-header {
-  margin-bottom: 10px;
-  width: 100%;
-  height: 28px;
-}
-header div {
-  background-color: black;
-  margin-top: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-header div h2 {
-  border: 2px solid gold;
-  color: white;
-  font-size: 18px;
-  width: 30%;
-  text-align: center;
-}
-header div h2:first-child {
-  background-color: gold;
-  color: black;
-}
-header div h2:nth-of-type(2) {
-  background-color: black;
-  color: gold;
-  border: none;
-}
-header div h2:nth-of-type(3) {
-  background-color: black;
-  color: gold;
-}
-
 #game-display {
   display: flex;
   flex-direction: row;
@@ -311,49 +310,49 @@ header div h2:nth-of-type(3) {
   border-radius: 10px;
 }
 
-@media screen and (min-width: 760px) {
-  #game-display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40rem;
-  }
-  .cash-amounts p {
-    text-align: right;
-    font-size: 25px;
-  }
-  .case {
-    min-width: 23%;
-    height: 12%;
-    font-size: 28px;
-    margin: 2px;
-  }
-  #briefcase-display {
-    display: flex;
-    flex-direction: row;
-    font-size: 15px;
-  }
-  #briefcase-display button {
-    min-width: 60%;
-  }
-  #user-prompt-display h2 {
-    font-size: 15px;
-  }
-  #restart-button button {
-    font-size: 20px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: "Oswald", sans-serif;
 }
-@media screen and (min-width: 1020px) {
-  #game-display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40rem;
-  }
-  .case {
-    min-width: 23%;
-    height: 12%;
-    font-size: 28px;
-    margin: 2px;
-  }
+
+body {
+  min-height: 100%;
+  padding-top: 10px;
+  background-color: black;
+}
+
+header {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 28px;
+}
+header div {
+  background-color: black;
+  margin-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header div h2 {
+  border: 2px solid gold;
+  color: white;
+  font-size: 18px;
+  width: 30%;
+  text-align: center;
+}
+header div h2:first-child {
+  background-color: gold;
+  color: black;
+}
+header div h2:nth-of-type(2) {
+  background-color: black;
+  color: gold;
+  border: none;
+}
+header div h2:nth-of-type(3) {
+  background-color: black;
+  color: gold;
 }/*# sourceMappingURL=styles.css.map */
