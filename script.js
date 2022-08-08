@@ -29,7 +29,6 @@
 //transition the background color of the case to be velvet with white text and silver border, then make that button not clickable
 
 //TO-DO: Crop out white space in case images
-//Adjust sizes of buttons for larger screens
 //add phone call to imitate the banker calling
 
 const briefcaseButtons = document.querySelectorAll(".case");
@@ -97,7 +96,21 @@ const handleInitializeGame = () => {
     }
 }
 
+const playAudio = () => {
+    console.log("Audio is playing")
+    let audio = new Audio("./resources/banker_ringing.mp3");
+    audio.play;
+
+    // int = setInterval(() => {
+    //     if(audio.currentTime > .4){
+    //         audio.pause();
+    //         clearInterval(int);
+    //     }
+    // },10);
+}
+
 const handleBankerOffer = () => {
+    playAudio();
     //filtering out all zeroed out values and then sorting
     let leftoverCashAmounts = arrayOfBriefcases.filter(Number);
     leftoverCashAmounts = leftoverCashAmounts.sort((a, b) => a - b);
@@ -311,6 +324,7 @@ const handlePopup = (isDeal, dealButton) => {
 for (let i = 0; i < briefcaseButtons.length; i++) {
     briefcaseButtons[i].addEventListener("click", () => {
         handleBriefcaseClick(briefcaseButtons, i, arrayOfBriefcases);
+        playAudio();
     })
 }
 
