@@ -43,9 +43,8 @@
 
 .case {
     color: $primary-color;
-    background-image: url("./resources/silver_metal_briefcase_312110.jpg");
+    background-image: url("./resources/silver_metal_briefcase_modified.png");
     background-size: 100% 100%;
-    background-color: silver;
     min-width: 33%;
     height: 11%;
     margin: 0;
@@ -78,10 +77,9 @@
     }
 }
 .personal-case {
-    background-image: url("./resources/silver_metal_briefcase_312110.jpg");
+    background-image: url("./resources/silver_metal_briefcase_modified.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-color: silver;
     border-radius: 10px;
     color: $primary-color;
 }

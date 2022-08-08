@@ -99,7 +99,7 @@ const handleInitializeGame = () => {
 const playAudio = () => {
     console.log("Audio is playing")
     let audio = new Audio("./resources/banker_ringing.mp3");
-    audio.play;
+    audio.play();
 
     // int = setInterval(() => {
     //     if(audio.currentTime > .4){
