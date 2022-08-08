@@ -44,7 +44,7 @@
 .case {
     color: $primary-color;
     background-image: url("./silver_metal_briefcase_312110.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
     background-color: silver;
     min-width: 33%;
     height: 11%;
@@ -79,7 +79,8 @@
 }
 .personal-case {
     background-image: url("./silver_metal_briefcase_312110.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     background-color: silver;
     border-radius: 10px;
     color: $primary-color;
@@ -278,7 +279,7 @@
     border-radius: 10px;
 }
 
-@media screen and(min-width: 760px) {
+@media screen and(min-width: 450px) {
 
     #game-display {
         display: flex;
@@ -330,9 +331,19 @@
         height: 40rem;
     }
     .case{
-        min-width: 23%;
-        height: 12%;
+        min-width: 15%;
+        height: 18%;
         font-size: 28px;
         margin: 2px;
     }
+    #briefcase-display {
+        display: flex;
+        flex-direction: row;
+        font-size: 15px;
+        min-width: 20%;
+        button {
+            min-width: 50%;
+        }
+    }
+
 }
