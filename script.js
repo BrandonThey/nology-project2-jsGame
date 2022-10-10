@@ -209,9 +209,9 @@ const testCasesRemoved = (casesRemoved, amountToRemove) =>{
             break;
         default:
             //adding a delay so the user can see what briefcase they removed
-            setTimeout(handleBankerOffer, 800);
             //calling handleBankerOffer to form an offer for the user
             setTimeout(handleBankerOffer, 800);
+
             //setting up the next time the banker calls
             break;
     }
