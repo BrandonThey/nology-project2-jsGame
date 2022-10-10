@@ -212,6 +212,7 @@ const testCasesRemoved = (casesRemoved, amountToRemove) =>{
             //calling handleBankerOffer to form an offer for the user
             setTimeout(handleBankerOffer, 800);
 
+            amountToRemove = 1;
             //setting up the next time the banker calls
             break;
     }
@@ -287,8 +288,8 @@ const handlePopup = (isDeal, dealButton) => {
             if(arrayOfBriefcases[i] != 0 && arrayOfBriefcases[i] != arrayOfBriefcases[personalBriefcaseIndex]){
                 setTimeout(() => {
                     personalCase.innerHTML = `$${arrayOfBriefcases[i++]}`
+                    userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[--i]} from case ${i++}!!`
                     personalCase.classList.add("opened")
-                    userPrompt.innerHTML = `Congrats!!!! You won $${arrayOfBriefcases[i]} from case ${i}!!`
                 }, 3000);
             }
         };
@@ -303,7 +304,7 @@ const handlePopup = (isDeal, dealButton) => {
     }
     //if the user chose don't switch
     else if(!isDeal && dealButton.innerHTML == "Don't Switch"){
-        userPrompt.innerHTML("You decided not to switch so lets see what your case holds!");
+        userPrompt.innerHTML = "You decided not to switch so lets see what your case holds!";
         //show the user how much they won
         setTimeout(() => {
             personalCase.innerHTML = `$${arrayOfBriefcases[personalBriefcaseIndex]}`
